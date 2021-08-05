@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <canvas id="canvas1" width="600" height="600">
+
+    </canvas>
+
+    <script>
+        var canvas1=document.querySelector('#canvas1')
+        //2. 上下文对象 画笔
+        var ctx=canvas1.getContext('2d')
+
+        ctx.beginPath()  //设置开始路径
+        ctx.moveTo(50,50)
+        ctx.lineTo(50,300)
+        ctx.lineTo(300,100)
+        ctx.lineTo(300,250)
+        ctx.closePath()  //设置结束路径
+        //绘制线段是圆滑端还是 直线端
+        // ctx.lineCap="round"
+        ctx.miterLimit=2 //以最大斜接长度 5 绘制线条：
+        ctx.strokeStyle="aqua"
+        ctx.lineJoin='round'   //注意驼峰命名法
+        ctx.lineWidth=10
+        ctx.stroke()
+
+    </script>
+
+</body>
+</html>

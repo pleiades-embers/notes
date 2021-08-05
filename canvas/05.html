@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <canvas id="canvas1" width="600" height="600">
+
+    </canvas>
+
+    <script>
+        var canvas1=document.querySelector('#canvas1')
+        //2. 上下文对象 画笔
+        var ctx=canvas1.getContext('2d')
+        
+        //绘制图像
+        // ctx.drawImage(图片对象,位置,位置)
+        // 图片对象后还有 裁剪的x位置 裁剪的y位置 裁剪的宽度 裁剪的高度
+
+        var img=new Image()
+        img.src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601627758798&di=65ee6de2c0cbfd8487f14499464bca7e&imgtype=0&src=http%3A%2F%2Fa3.att.hudong.com%2F14%2F75%2F01300000164186121366756803686.jpg"
+     
+        //图片载入之后 在进行绘制
+        img.onload=function(){
+            ctx.drawImage(img,50,50)
+            console.log(img)
+        }
+
+
+    </script>
+
+</body>
+</html>

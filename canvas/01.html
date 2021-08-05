@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <canvas id="canvas1" width="600" height="600">
+
+    </canvas>
+
+    <script>
+        var canvas1=document.querySelector('#canvas1')
+        console.log([canvas1])
+        //2. 上下文对象 画笔
+        var ctx=canvas1.getContext('2d')
+        
+        //绘制路径
+        ctx.rect(50,50,400,400)
+        ctx.fillStyle='aqua'
+        // ctx.fill()  //是否填充
+
+        //描边
+        ctx.lineWidth=1
+        ctx.strokeStyle='salmon'
+        ctx.stroke()
+    </script>
+
+</body>
+</html>

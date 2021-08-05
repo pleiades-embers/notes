@@ -1,0 +1,21 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/src/index.js",
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@npm/types": "^1.0.1",
+    "json5": "^2.2.0",
+    "ncp": "^2.0.0",
+    "tsc": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^14.17.5"
+  }
+}
