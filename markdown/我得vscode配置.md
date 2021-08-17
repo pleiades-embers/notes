@@ -1,4 +1,4 @@
-### vscode 配置
+### vscode 配置 windows版
 ```json
 {
     "workbench.colorTheme": "SynthWave '84",
@@ -143,5 +143,147 @@
     "explorer.confirmDragAndDrop": false,
     "java.home": "C:\\Program Files\\Java\\jdk11",
     "editor.renderControlCharacters": false
+}
+```
+
+
+### mac 版 vscode 配置
+```json
+{
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "SynthWave '84",
+    "git.autofetch": true,
+    "breadcrumbs.enabled": false,
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "none",
+    "files.autoSave": "onWindowChange",
+    "explorer.confirmDelete": false,
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "launch": {
+        "configurations": [],
+        "compounds": []
+    },
+    "code-runner.executorMap": {
+        "typescript": "/Users/apple/.npm-global/bin/ts-node"
+    },
+    "leetcode.endpoint": "leetcode-cn",
+    "leetcode.defaultLanguage": "typescript",
+    "leetcode.workspaceFolder": "/Users/apple/.leetcode",
+    "leetcode.hint.configWebviewMarkdown": false,
+    "leetcode.hint.commandShortcut": false,
+    "git.enableSmartCommit": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.fontLigatures": null,
+    "cSpell.userWords": [
+        "Activityindicator",
+        "Catrgory",
+        "Commentable",
+        "Deilivery",
+        "Fapiao",
+        "Filep",
+        "Goodlist",
+        "Iphone",
+        "MERCHAN",
+        "MERCHANTSELF",
+        "Navgation",
+        "Navigations",
+        "Orderdelete",
+        "PAGENOTFOUND",
+        "Protocal",
+        "Rebuy",
+        "Rebuyable",
+        "Receiveable",
+        "Semibold",
+        "Signedin",
+        "Subsite",
+        "Swiper",
+        "TRACKEVENTS",
+        "TRACKTRIGGER",
+        "Unmount",
+        "WXSS",
+        "Webh",
+        "Wxml",
+        "aspectfill",
+        "brandname",
+        "builtins",
+        "camelcase",
+        "categorys",
+        "comall",
+        "cond",
+        "currentlprice",
+        "dashdash",
+        "dayunit",
+        "endtime",
+        "eqeqeq",
+        "estored",
+        "from'lodash",
+        "greentext",
+        "headphoto",
+        "hoursunit",
+        "idcard",
+        "inputbox",
+        "isnan",
+        "kanaslake",
+        "merchantinfo",
+        "merchantname",
+        "metainfo",
+        "miao",
+        "miniprogram",
+        "mixins",
+        "multiline",
+        "navicon",
+        "nbsp",
+        "noglob",
+        "originalprice",
+        "parens",
+        "preload",
+        "pricetag",
+        "pricetype",
+        "projectname",
+        "puzhehei",
+        "puzheheitest",
+        "quantitywith",
+        "reosurce",
+        "reslove",
+        "roomid",
+        "secondunit",
+        "starname",
+        "stormwind",
+        "stylelint",
+        "subistes",
+        "subpackages",
+        "subsites",
+        "taroify",
+        "tarojs",
+        "theirprice",
+        "toplimit",
+        "typeof",
+        "vslide",
+        "weapp",
+        "wechat",
+        "zxsy"
+    ],
+    "tabnine.experimentalAutoImports": true,
+    "[scss]": {
+        "editor.defaultFormatter": "sasa.vscode-sass-format"
+    },
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "git.confirmSync": false,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "window.zoomLevel": -1
 }
 ```
