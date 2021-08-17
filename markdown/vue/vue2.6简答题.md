@@ -239,3 +239,68 @@ with(this){return _c('div',{attrs:{"id":"demo"}},[_c('h1',[_v("v-for和v-if谁�
 **结论**
 
 Vue组件可能存在多个实例，如果使用对象形式定义data，则会导致它们共用一个data对象，那么状态变更将会影响所有组件实例，这是不合理的；采用函数形式定义，在initData时会将其作为工厂函数返回全新data对象，有效规避多实例之间状态污染问题。而在Vue根实例创建过程中则不存在该限制，也是因为根实例只能有一个，不需要担心这种情况。
+
+
+
+# vue2 的 响应式
+
+```javascript
+class Emvue {
+    constructor(options){
+        //保存选项
+        this.$options=options
+
+        //传入data选项
+        this.$data=options.data
+
+        //响应化
+        this.observe(this.$data)
+    }
+
+    observe(value){
+        //如果 值为空 或者不是对象  
+
+        if(!value||typeof value!=='object'){
+            return
+        }
+        //遍历数据响应式
+        Object.keys(value).forEach(key=>{
+            this.defineReactive(value,key,value[key])
+
+            //代理转发  简化使用调用的$data 对象
+            this.proxyData(key)
+        })
+    }
+
+
+    defineReactive(obj,key,val){
+        //递归遍历 
+        this.observe(val)
+
+        Object.defineProperty(obj,key,{
+            get(){
+                return val
+            },
+            set(NewVal){
+                if(NewVal!==val){
+                    val=NewVal
+                    console.log(key+'属性更新了')
+                }
+            }
+        })
+    }
+
+    proxyData(key){      //代理转发
+        Object.defineProperty(this,key,{
+            get(){
+                return this.$data[key]
+            },
+            set(NewVal){
+                this.$data[key]=NewVal
+            }
+        })
+    }
+
+}
+```
+

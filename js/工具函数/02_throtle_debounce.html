@@ -1,58 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+  </head>
 
-</head>
-
-<body>
+  <body>
     <button id="throttle">节流throttle</button>
     <button id="debounce">防抖debounce</button>
 
     <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
     <script>
-        //节流
-        function throttle(callback, delay) {
-            let pre = 0
-            return function (event) {
-                console.log('事件')
-                const current = Date.now()
-                if (current - pre > delay) { //只有离上一次调用callback得时间差大于delay
-                    //调用真正处理事件得函数,this是事件源
-                    callback.call(this, event)
-                    //记录此次调用得时间
-                    pre = current
-                }
-            }
-        }
+      //节流
+      function throttle(callback, delay) {
+        let pre = 0;
+        return function (event) {
+          console.log("事件");
+          const current = Date.now();
+          if (current - pre > delay) {
+            //只有离上一次调用callback得时间差大于delay
+            //调用真正处理事件得函数,this是事件源
+            callback.call(this, event);
+            //记录此次调用得时间
+            pre = current;
+          }
+        };
+      }
 
-        //用来返回防抖函数得工具函数
-        function debounce(callback,delay){
-            return function(event){
-                //如果上次事件还没有真正处理,取消他
-                if(callback.hasOwnProperty('timeoutId')){ //效率更高
-                    clearInterval(callback.timeoutId)
-                }
-                //在事件发生后指定事件才调用处理事件得回调函数
-                callback.timeoutId=setTimeout(() => {
-                    callback.call(this,event)
-                    delete callback.timeoutId
-                }, delay);
-            }
-        }
-
+      //用来返回防抖函数得工具函数
+      function debounce(callback, delay) {
+        return function (event) {
+          //如果上次事件还没有真正处理,取消他
+          if (callback.hasOwnProperty("timeoutId")) {
+            //效率更高
+            clearInterval(callback.timeoutId);
+          }
+          //在事件发生后指定事件才调用处理事件得回调函数
+          callback.timeoutId = setTimeout(() => {
+            callback.call(this, event);
+            delete callback.timeoutId;
+          }, delay);
+        };
+      }
     </script>
     <script>
-        /*         
+      /*         
         如何限制时间处理函数频繁调用
             1.函数节流
             2.函数防抖 
         */
 
-        /*         
+      /*         
         3. 函数节流(throttle)
             1.理解:
                 在函数需要频繁出发时:函数执行一次后,只有大于设定得执行周期后才会执行第二次
@@ -64,7 +63,7 @@
                 抢购疯狂点击(click) 
         */
 
-        /*         
+      /*         
         4. 函数防抖(debounce)
             1).理解:
                在函数需要频繁触发时:在规定事件内,只让最后一次生效,前面得不生效.
@@ -73,20 +72,28 @@
                 输入框试试搜索联想(keyup/input)
         */
 
+      // function handleClick(event) {
+      //     console.log('处理点击事件', this, event)
+      // }
 
-        function handleClick(event) {
-            console.log('处理点击事件', this, event)
-        }
+      // document.getElementById('throttle').onclick = handleClick
+      // document.getElementById('throttle').onclick=_.throttle(handleClick,2000,{'trailing':false})
+      // document.getElementById('debounce').onclick=_.debounce(handleClick,2000)
+      // document.getElementById('throttle').onclick = throttle(handleClick, 2000, {
+      //     'trailing': false
+      // })
+      // document.getElementById('debounce').onclick = debounce(handleClick, 2000)
 
-        document.getElementById('throttle').onclick = handleClick
-        // document.getElementById('throttle').onclick=_.throttle(handleClick,2000,{'trailing':false})
-        // document.getElementById('debounce').onclick=_.debounce(handleClick,2000)
-        // document.getElementById('throttle').onclick = throttle(handleClick, 2000, {
-        //     'trailing': false
-        // })
-        document.getElementById('debounce').onclick = debounce(handleClick, 2000)
+      let obj={
+          a:"哈哈",
+          b:fn
+      };
+
+      function fn(){
+        console.log(this)
+      }
+      
+      obj.b().bind(undefined)
     </script>
-
-</body>
-
+  </body>
 </html>

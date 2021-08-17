@@ -49,3 +49,5 @@ fn.bind(obj)(3, 4);
   bind(obj):返回一个新的函数,新函数内部会调用原来的函数,且this为bind()指定的第一个参数的值
   注意:如果obj是null/undefined,this为window 
  */
+
+
