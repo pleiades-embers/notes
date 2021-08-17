@@ -159,4 +159,5 @@ portal可以将内容插入到除了父节点的dom之外的地方去渲染，�
 2、第一个参数（child）是任何可渲染的 React 子元素，例如一个元素，字符串或 片段(fragment)。第二个参数（container）则是一个 DOM 元素。
 3、对于 portal 的一个典型用例是当父组件有 overflow: hidden 或 z-index 样式，但你需要子组件能够在视觉上 “跳出(break out)” 其容器。例如，对话框、hovercards以及提示框。所以一般react组件里的模态框，就是这样实现的。
 
-### React如何进行代码拆分？拆分的原则是什么？
+### React Filer 可以理解为？
+React内部实现的一套状态更新机制。支持任务不同优先级，可中断与恢复，并且恢复后可以复用之前的中间状态。
