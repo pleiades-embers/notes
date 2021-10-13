@@ -5,6 +5,7 @@ let uid=1
 fs.readFile('./json/user.json','utf8',function(err,data){
     const userData=JSON.parse(data),
           userInfo=userData.filter(item=>item.id==uid)[0]
+          console.log(userInfo)
     fs.readFile('./json/userCourse.json','utf8',function(err,data){
         const userCourseData=JSON.parse(data),
             userId=userInfo.id,

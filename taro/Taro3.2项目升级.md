@@ -8,3 +8,8 @@ npm i -g npm-check
 npm-check -u
 
 按空格选中主要的包 Cli 版本升级了 runTime 也要记得升级
+
+## 增加Taro3.3 的支持h5 plugin
+https://taro-docs.jd.com/taro/blog/2021-04-22-Taro-3.3-alpha
+
+## 
