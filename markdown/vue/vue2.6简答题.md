@@ -1,3 +1,22 @@
+### vue和React对比
+#### 相同点
+
+- 都有组件化思想
+- 都支持服务器端渲染
+- 都有Virtual DOM（虚拟dom）
+- 数据驱动视图
+- 都有支持native的方案：`Vue`的`weex`、`React`的`React native`
+- 都有自己的构建工具：`Vue`的`vue-cli`、`React`的`Create React App`
+
+#####  区别
+
+- 数据流向的不同。`react`从诞生开始就推崇单向数据流，而`Vue`是双向数据流
+- 数据变化的实现原理不同。`react`使用的是不可变数据，而`Vue`使用的是可变的数据
+- 组件化通信的不同。`react`中我们通过使用回调函数来进行通信的，而`Vue`中子组件向父组件传递消息有两种方式：事件和回调函数
+- diff算法不同。`react`主要使用diff队列保存需要更新哪些DOM，得到patch树，再统一操作批量更新DOM。`Vue` 使用双向指针，边对比，边更新DOM
+
+
+
 ### vue的生命周期有哪些，分别有哪些作用
 
 -  beforeCreate  创建前的状态，初始化事件和生命周期。
@@ -36,13 +55,9 @@
 
 ###	mvvm是什么？你所了解的mvvm框架有哪些
 
-View 层： 视图层 主要给用户展示各种信息
-
-Model层：数据层
-
-VueModel层：视图模型层 是view和Model沟通的桥梁
-
-一方面它实现了Data Binding,将model的改变实时的反应到View中
+Model：模型层，负责处理业务逻辑以及和服务器端进行交互
+View：视图层：负责将数据模型转化为UI展示出来，可以简单的理解为HTML页面
+ViewModel：视图模型层，用来连接Model和View，是Model和View之间的通信桥梁
 
 另一方面它实现了DOM Listener,当DOM发生一些事件时,可以监听到,并在需要的情况先改变对应的Data
 
@@ -61,12 +76,6 @@ vue  react angular  ember drop
 2. `methods`方法表示一个具体的操作，主要书写业务逻辑
 3. `watch` 一个对象，键是需要观察的表达式，值是对应回调函数。主要用来监听某些特定的数据变换，从而惊醒某些具体的业务逻辑操作
 
-### promise 三种时态
-
-1. pending:等待状态，比如正在进行网络请求，或者定时器没有到时间
-2. fulfill: 满足状态，当我们主动回调了resolve 时，就处于该状态，并且会回调.then()
-3. reject: 拒绝状态，当我们主动回调了reject时，就处于该状态，并且会回调。catch()
-
 ### vue路由传递参数的方式
 
 - params 的类型
@@ -81,7 +90,6 @@ vue  react angular  ember drop
   - 传递的方式:对象中使用query的key作为传递方式
   - 传递后形成的路径:/router?id=123,/router?id=abc
 
-  
 
 ### vue程序运行过程
 
