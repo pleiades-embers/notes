@@ -171,3 +171,8 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 
 ### 用android 启动真机
+
+
+### 真机调试
+
+通过真机上的menu按键或者摇晃手机会出现一个菜单，然后选择"Debug JS Remotely"选项
