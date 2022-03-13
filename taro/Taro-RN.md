@@ -22,6 +22,8 @@ https://reactnative.cn/docs/environment-setup
 https://taro-docs.jd.com/taro/docs/2.x/react-native
 
 
+触发 js bundle 构建
+http://127.0.0.1:8081/rn_temp/index.bundle?platform=android&dev=true
 
 ### 错误
 
