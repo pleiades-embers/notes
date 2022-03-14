@@ -109,8 +109,9 @@ Could not determine the dependencies of task ':app:mergeDebugAssets'.
 Execution failed for task ':app:installDebug'.
 com.android.builder.testing.api.DeviceException: No online devices found.
 
-解决办法：
 
+解决办法：
+```
 1.输入adb devices 查看当前设备列表及其状态。
 
           第一次执行此命令会先杀掉adb进程：adb server is out of date, killing....
@@ -162,6 +163,29 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 请确保你正常指定了 Android SDK 路径。你可以在 Android Studio 的 "Preferences" 菜单中查看 SDK 的真实路径，具体是Appearance & Behavior → System Settings → Android SDK。
 
+
+#### 启动真机调试报错
+
+```bash
+java.lang.SecurityException: Permission Denial: starting Intent { flg=0x10000000 cmp=com.comall.hisense.hiu/.MainActivity } from null (pid=15324, uid=2000) not exported from uid 10209
+        at com.android.server.wm.ActivityStackSupervisor.checkStartAnyActivityPermission(ActivityStackSupervisor.java:1120)
+        at com.android.server.wm.ActivityStarter.startActivity(ActivityStarter.java:818)        at com.android.server.wm.ActivityStarter.startActivity(ActivityStarter.java:617)
+        at com.android.server.wm.ActivityStarter.startActivityMayWait(ActivityStarter.java:1453)
+        at com.android.server.wm.ActivityStarter.execute(ActivityStarter.java:543)
+        at com.android.server.wm.ActivityTaskManagerService.startActivityAsUser(ActivityTaskManagerService.java:1101)     
+        at com.android.server.wm.ActivityTaskManagerService.startActivityAsUser(ActivityTaskManagerService.java:1075)     
+        at com.android.server.am.ActivityManagerService.startActivityAsUser(ActivityManagerService.java:3635)
+        at com.android.server.am.ActivityManagerShellCommand.runStartActivity(ActivityManagerShellCommand.java:518)               at com.android.server.am.ActivityManagerShellCommand.onCommand(ActivityManagerShellCommand.java:172)        at android.os.ShellCommand.exec(ShellCommand.java:104)
+        at com.android.server.am.ActivityManagerService.onShellCommand(ActivityManagerService.java:10324)
+        at android.os.Binder.shellCommand(Binder.java:881)
+        at android.os.Binder.onTransact(Binder.java:765)
+        at android.app.IActivityManager$Stub.onTransact(IActivityManager.java:4739)
+        at com.android.server.am.ActivityManagerService.onTransact(ActivityManagerService.java:2859)
+        at android.os.Binder.execTransactInternal(Binder.java:1021)        at android.os.Binder.execTransact(Binder.java:994)
+error Failed to start the app. Run CLI with --verbose flag for more details.Error: Command failed: C:/Users/embers/AppData/local/Android/Sdk/platform-tools/adb -s 692ea7d0 shell am start -n com.comall.hisense.hiu/com.comall.hisense.hiu.MainActivity
+    at makeError (D:\code\cybershop-saas-weapp-app\node_modules\execa\index.js:174:9)error Command failed with exit code 1.info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+
+```
 
 
 ### 用android 启动真机
