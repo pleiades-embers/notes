@@ -151,7 +151,7 @@ React Native 需要通过环境变量来了解你的 Android SDK 装在什么路
 
 ~表示用户目录，即/Users/你的用户名/，而小数点开头的文件在 Finder 中是隐藏的，并且这个文件有可能并不存在。可在终端下使用vi ~/.bash_profile命令创建或编辑。如不熟悉 vi 操作，请点击 这里 学习。
 
-```bash
+​```bash
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
@@ -213,3 +213,47 @@ AndroidManifest.xml
 <manifest>
 ```
 
+#### 确定硬件可用性
+
+如果您将硬件声明为可选，您的应用在没有该硬件的设备上也可以运行。要检查设备是否具有特定的硬件，请使用 [`hasSystemFeature()`](https://developer.android.com/reference/android/content/pm/PackageManager#hasSystemFeature(java.lang.String)) 方法，如以下代码段所示。如果设备不具有该硬件，只需在您的应用中停用此功能即可。
+
+[Kotlin](https://developer.android.com/training/permissions/declaring#kotlin)[Java](https://developer.android.com/training/permissions/declaring#java)
+
+```java
+// Check whether your app is running on a device that has a front-facing camera.
+if (getApplicationContext().getPackageManager().hasSystemFeature(
+        PackageManager.FEATURE_CAMERA_FRONT)) {
+    // Continue with the part of your app's workflow that requires a
+    // front-facing camera.
+} else {
+    // Gracefully degrade your app experience.
+}
+```
+
+## 测试两种权限模型
+
+在 Android 6.0（API 级别 23）及更高版本中，用户可以在运行时授予和撤消应用权限，而不是在安装应用时授予和撤消权限。因此，您必须在多种条件下测试应用。在 Android 6.0 之前，您可以合理地认为，如果应用能运行，它就已经获得在应用清单中声明的全部权限。现在，无论使用哪个 API 级别，用户都可以开启或关闭任何应用的权限。您应测试以确保您的应用能在各种权限情境中正常运行。
+
+以下提示可帮助您在搭载 API 级别 23 或更高级别的设备上找出与权限有关的代码问题：
+
+- 确定应用的当前权限和相关的代码路径。
+
+- 在各种受权限保护的服务和数据中测试用户流。
+
+- 使用授予或撤消权限的各种组合进行测试。例如，相机应用可能会在清单中列出 `CAMERA`、`READ_CONTACTS` 和 `ACCESS_FINE_LOCATION`。您应在测试该应用时逐一开启和关闭这些权限，确保应用可以妥善处理所有权限配置。
+
+- 使用adb工具从命令行管理权限：
+
+  - 按组列出权限和状态：
+
+    ```
+    $ adb shell pm list permissions -d -g
+    ```
+
+  - 授予或撤消一项或多项权限：
+
+    ```
+    $ adb shell pm [grant|revoke] <permission-name> ...
+    ```
+
+- 针对使用权限的服务对应用进行分析。
